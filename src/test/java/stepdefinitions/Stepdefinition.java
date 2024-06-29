@@ -7,6 +7,8 @@ import org.openqa.selenium.interactions.Actions;
 import utilities.OptionsMet;
 import utilities.ReusableMethods;
 
+import javax.sound.midi.InvalidMidiDataException;
+
 import static utilities.Driver.getAppiumDriver;
 import static utilities.Driver.quitAppiumDriver;
 
@@ -79,6 +81,45 @@ public class Stepdefinition extends OptionsMet {
 
     }
 
+    @Given("Scrolls down to see popular brands")
+    public void scrolls_down_to_see_popular_brands() throws InvalidMidiDataException {
+        card.seePopularBrands();
+    }
 
+    @Given("User enters fullname {string} phoneNumber {string} and password {string}")
+    public void user_enters_fullname_phone_number_and_password(String fullName, String phoneNumber, String password) {
+        card.signUpPhoneNumber(fullName,phoneNumber,password);
+    }
+
+
+    @Given("User enters fullname {string} email {string} and password {string}")
+    public void user_enters_fullname_email_and_password(String fullName, String email, String password) {
+        card.signUpEmail(fullName,email,password);
+    }
+
+    @Given("User enters fullname {string} invalid email {string} and password {string}")
+    public void user_enters_fullname_invalid_email_and_password(String fullName, String invalidEmail, String password) {
+        card.signUpInvalidEmail(fullName,invalidEmail,password);
+    }
+
+    @Given("User enters fullname {string} invalid phoneNumber {string} and password {string}")
+    public void user_enters_fullname_invalid_phone_number_and_password(String fullName, String invalidPhoneNumber, String password) {
+        card.signUpInvalidPhoneNumber(fullName,invalidPhoneNumber,password);
+    }
+
+    @Given("User enters fullname {string} email {string} and {string}")
+    public void user_enters_fullname_email_and(String fullName, String email, String invalidPassword) {
+        card.signUpInvalidPassword(fullName,email,invalidPassword);
+    }
+
+    @Given("User login application with valid info")
+    public void user_login_application_with_valid_info() {
+        card.login();
+    }
+
+    @Given("User change email {string} and phone_number {string}")
+    public void user_change_email_and_phone_number(String email, String phoneNumber) {
+        card.editProfile(email,phoneNumber);
+    }
 }
 
