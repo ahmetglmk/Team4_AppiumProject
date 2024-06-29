@@ -159,12 +159,11 @@ public class QueryCardPage {
     public void signUpInvalidEmail(String fullName, String invalidEmail, String password) {
         Actions actions = new Actions(getAppiumDriver());
         assertTrue(signUpNameBox.isDisplayed());
+        useEmailButton.click();
         signUpNameBox.click();
         signUpNameBox.sendKeys(fullName);
         ReusableMethods.wait(1);
-        useEmailButton.click();
-        actions.sendKeys(Keys.TAB).sendKeys(Keys.TAB)
-                .sendKeys(invalidEmail).perform();
+        actions.sendKeys(Keys.TAB).sendKeys(invalidEmail).perform();
         ReusableMethods.wait(1);
         actions.sendKeys(Keys.TAB).sendKeys(password).perform();
         ReusableMethods.wait(1);
@@ -192,12 +191,11 @@ public class QueryCardPage {
     public void signUpInvalidPassword(String fullName, String email, String invalidPassword) {
         Actions actions = new Actions(getAppiumDriver());
         assertTrue(signUpNameBox.isDisplayed());
+        useEmailButton.click();
         signUpNameBox.click();
         signUpNameBox.sendKeys(fullName);
         ReusableMethods.wait(1);
-        useEmailButton.click();
-        actions.sendKeys(Keys.TAB).sendKeys(Keys.TAB)
-                .sendKeys(email).perform();
+        actions.sendKeys(Keys.TAB).sendKeys(email).perform();
         ReusableMethods.wait(1);
         actions.sendKeys(Keys.TAB).sendKeys(invalidPassword).perform();
         ReusableMethods.wait(1);

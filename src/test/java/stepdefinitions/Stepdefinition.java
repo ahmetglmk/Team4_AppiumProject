@@ -112,8 +112,8 @@ public class Stepdefinition extends OptionsMet {
         card.signUpInvalidPassword(fullName,email,invalidPassword);
     }
 
-    @Given("User login application with valid info")
-    public void user_login_application_with_valid_info() {
+    @Given("User login to application with valid info")
+    public void user_login_to_application_with_valid_info() {
         card.login();
     }
 
