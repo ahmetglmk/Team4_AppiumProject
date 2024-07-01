@@ -1,8 +1,11 @@
 package stepdefinitions;
 
+import Page.DynamicLocator;
 import Page.QueryCardPage;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import utilities.OptionsMet;
 import utilities.ReusableMethods;
@@ -15,6 +18,7 @@ import static utilities.Driver.quitAppiumDriver;
 public class Stepdefinition extends OptionsMet {
     QueryCardPage card = new QueryCardPage();
     Actions actions = new Actions(getAppiumDriver());
+    DynamicLocator dynamicLocator=new DynamicLocator();
 
     @Given("User makes driver adjustments")
     public void user_makes_driver_adjustments() {
@@ -120,6 +124,55 @@ public class Stepdefinition extends OptionsMet {
     @Given("User change email {string} and phone_number {string}")
     public void user_change_email_and_phone_number(String email, String phoneNumber) {
         card.editProfile(email,phoneNumber);
+    }
+
+    //**US 004
+
+    @When("Visitor displays {string} title")
+    public void visitorDisplaysTitle(String Categories) throws InvalidMidiDataException {
+        ReusableMethods.wait(2);
+        VerifyElementText(Categories);
+    }
+
+    @When("Displays menus under categories {string}")
+    public void displaysMenusUnderCategories(String text) throws InvalidMidiDataException {
+        card.swipeAndSelect(text);
+    }
+
+    ///US 008
+    @Given("Verifies sign in elements")
+    public void verifies_sign_in_elements() {
+        ReusableMethods.wait(2);
+        clickButtonByDescription("Profile");
+        ReusableMethods.wait(2);
+        clickButtonByDescription("Sign In");
+        ReusableMethods.wait(2);
+        card.verifySignInPageElement();
+    }
+    @Given("As a {string} with {string} email get login")
+    public void as_a_with_email_get_login(String loginType, String emailName) {
+        card.getLoginwithParameter(emailName);
+    }
+    @Given("Verifies profil name {string}")
+    public void verifies_profil_name(String profilName) {
+        card.verifyProfilPage(profilName);
+    }
+    @Given("Go to sign in page")
+    public void go_to_sign_in_page() {
+        ReusableMethods.wait(2);
+        //WebElement profil=dynamicLocator.getDynamicElementByContentDesc("Profile");
+        //profil.click();
+        card.profilIcon.click();
+        ReusableMethods.wait(1);
+        WebElement signIn=dynamicLocator.getDynamicElementByContentDesc("Sign In");
+        signIn.click();
+    }
+    @Given("Verifies that you cannot log in")
+    public void verifies_that_you_cannot_log_in() {
+        ReusableMethods.wait(2);
+        VerifyElementText("Error\n" + "Invalid credentials or you are blocked");
+        ReusableMethods.wait(2);
+
     }
 }
 
