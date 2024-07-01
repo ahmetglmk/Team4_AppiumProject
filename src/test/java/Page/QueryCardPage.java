@@ -1,9 +1,11 @@
 package Page;
 
 
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import lombok.Getter;
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -226,6 +228,20 @@ public class QueryCardPage {
         editPageSaveChanges.click();
         ReusableMethods.wait(2);
         assertTrue(profileUpdateAlert.isDisplayed());
+    }
+
+
+    public void verifyingAndClickEasyLinks(String easyLink){
+        WebElement easyLinks = getAppiumDriver().findElement(MobileBy.AndroidUIAutomator(
+                "new UiSelector().description(\"" + easyLink + "\")"
+        ));
+
+        assertTrue(easyLinks.isDisplayed());
+        easyLinks.click();
+    }
+
+    public void verifyRelevantPageEasyLink(String text){
+
     }
 }
 

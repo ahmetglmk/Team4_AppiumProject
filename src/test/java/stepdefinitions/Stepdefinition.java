@@ -121,5 +121,19 @@ public class Stepdefinition extends OptionsMet {
     public void user_change_email_and_phone_number(String email, String phoneNumber) {
         card.editProfile(email,phoneNumber);
     }
+
+
+
+    @Given("Sees {string} button at the bottom of the home page and clicks")
+    public void sees_button_at_the_bottom_of_the_home_page_and_clicks(String easyLink) {
+        ReusableMethods.wait(5);
+        card.verifyingAndClickEasyLinks(easyLink);
+        ReusableMethods.wait(5);
+    }
+
+    @Given("Verifies visibility of {string} text on {string} page")
+    public void verifies_visibility_of_text_on_page(String string, String string2) {
+
+    }
 }
 
