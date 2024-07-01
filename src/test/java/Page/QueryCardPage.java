@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import utilities.ConfigReader;
+import utilities.Driver;
+import utilities.OptionsMet;
 import utilities.ReusableMethods;
 
 import javax.sound.midi.InvalidMidiDataException;
@@ -16,6 +18,7 @@ import javax.sound.midi.InvalidMidiDataException;
 import static org.junit.Assert.assertTrue;
 import static utilities.Driver.getAppiumDriver;
 import static utilities.OptionsMet.swipe;
+import static utilities.OptionsMet.xPathElementClick;
 
 @Getter
 public class QueryCardPage {
@@ -67,6 +70,41 @@ public class QueryCardPage {
    private WebElement editPageSaveChanges;
    @AndroidFindBy(accessibility = "PROFILE_UPDATE\\nProfile Updated Successfully")
    private WebElement profileUpdateAlert;
+
+   @AndroidFindBy(accessibility ="Flower Print Foil T-shirt\n0 (0  Reviews)\n$65.00")
+   private WebElement productclick;
+    @AndroidFindBy (xpath = "//android.widget.ImageView[@content-desc=\"Wishlist\"]")
+    private WebElement wishList;
+    @AndroidFindBy (xpath = "//android.view.View[@content-desc=\"S\"]")
+    private WebElement productsize;
+    @AndroidFindBy (xpath = "//android.widget.ImageView[@content-desc=\"Add To Cart\"]")
+    private WebElement addToCart;
+    @AndroidFindBy  (xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView")
+    private WebElement bag;
+    @AndroidFindBy (xpath = "//android.view.View[@content-desc=\"Proceed to Checkout\"]")
+    private WebElement proceedToCheckout;
+    @AndroidFindBy (xpath = "//android.view.View[@content-desc=\"Pick Up\"]")
+    private WebElement pickUp;
+    @AndroidFindBy (xpath = "//android.view.View[@content-desc=\"Delivery\"]")
+    private WebElement delivery;
+    @AndroidFindBy (xpath = "//android.view.View[@content-desc=\"Shipping Address\"]")
+    private WebElement shippingAdress;
+    @AndroidFindBy (xpath = "//android.widget.ImageView[@content-desc=\"Edit\"]")
+    private WebElement adressEditable;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(1)")
+    private WebElement adressEditable1;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Update Address\").instance(1)")
+    private WebElement updateAdress;
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"oske\")")
+    private WebElement ilksatırclick;
+    @AndroidFindBy (uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
+    private WebElement bosSatır;
+
+
+
+
+
+
 
 
 
@@ -226,6 +264,69 @@ public class QueryCardPage {
         editPageSaveChanges.click();
         ReusableMethods.wait(2);
         assertTrue(profileUpdateAlert.isDisplayed());
+    }
+
+    public void wishList() {
+        Actions actions = new Actions(getAppiumDriver());
+        assertTrue(wishList.isDisplayed());
+        assertTrue(wishList.isEnabled());
+    }
+
+
+    public void productadd() {
+        productclick.click();
+        productsize.click();
+        ReusableMethods.wait(1);
+
+
+            Actions actions = new Actions(Driver.getAppiumDriver());
+            for (int i = 0; i < 10; i++) {
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+
+            }
+        addToCart.click();
+            ReusableMethods.wait(1);
+        bag.click();
+
+
+    }
+
+    public void proceedToCheckoutClick() {
+        proceedToCheckout.click();
+
+
+    }
+
+    public void pickupDeliveryVisibleActive() {
+        assertTrue(pickUp.isDisplayed());
+        assertTrue(pickUp.isEnabled());
+        ReusableMethods.wait(1);
+        assertTrue(delivery.isDisplayed());
+        assertTrue(delivery.isEnabled());
+
+    }
+
+    public void adressisdisplayed() {
+        assertTrue(shippingAdress.isDisplayed());
+    }
+
+    public void adresseditable() {
+        adressEditable.click();
+        adressEditable1.click();
+        ReusableMethods.wait(2);
+        Actions actions = new Actions(getAppiumDriver());
+        ilksatırclick.click();
+        ilksatırclick.clear();
+
+
+        ReusableMethods.wait(2);
+        bosSatır.sendKeys("harun");
+        OptionsMet.hideKeyboard();
+        ReusableMethods.wait(1);
+        updateAdress.click();
+
+
+
     }
 }
 
