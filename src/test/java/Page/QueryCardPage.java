@@ -1,10 +1,13 @@
 package Page;
 
 
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import lombok.Getter;
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
@@ -25,7 +28,10 @@ public class QueryCardPage {
    public QueryCardPage(){
        PageFactory.initElements(new AppiumFieldDecorator(getAppiumDriver()),this);
 
-    }@AndroidFindBy(xpath = "(//android.widget.ImageView[1])[1]") private WebElement queryCardLogoElement;
+    }
+    DynamicLocator locator = new DynamicLocator();
+
+    @AndroidFindBy(xpath = "(//android.widget.ImageView[1])[1]") private WebElement queryCardLogoElement;
    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Profile\")")
    private WebElement profileButton;
    @AndroidFindBy (xpath = "(//android.widget.ImageView[1])[2]")
@@ -107,7 +113,23 @@ public class QueryCardPage {
 
 
 
-
+    //Arzu
+    @AndroidFindBy(xpath = "//*[@content-desc='Categories']")
+    private  WebElement categoriesText;
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Men T-Shirt\"]")
+    private WebElement categoriesSubMenus;
+    @AndroidFindBy(accessibility = "*Use Email Instead")
+    private WebElement useEmailText;
+    @AndroidFindBy(accessibility = "Profile")
+    public   WebElement profilIcon;
+    @AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[1]")
+    private WebElement emailBox;
+    @AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
+    private WebElement passwordBox;
+    @AndroidFindBy(accessibility = "arzubuldu.manager@querycart.com")
+    private WebElement verifyProfil;
+    @AndroidFindBy(xpath = "(//android.view.View[@content-desc=\"Sign Up\"])[1]")
+    private WebElement signUpPageText;
 
 
 
@@ -266,6 +288,90 @@ public class QueryCardPage {
         assertTrue(profileUpdateAlert.isDisplayed());
     }
 
+
+    //////////ARZU///////////////
+
+    public void getLoginwithParameter(String emailName){
+        ReusableMethods.wait(2);
+        enterEmailForLogin(emailName);
+        enterPasswordForLogin();
+        signInLoginClick();}
+
+    public void verifySignInPageElement(){
+        WebElement forgotPasswordElement=locator.getDynamicElementByContentDesc("Forgot Password");
+        forgotPasswordElement.click();
+        ReusableMethods.wait(1);
+        WebElement backToSignInElement=locator.getDynamicElementByContentDesc("Back to sign in");
+        assertTrue(backToSignInElement.isDisplayed());
+        backToSignInElement.click();
+        ReusableMethods.wait(1);
+        WebElement signUpElement= locator.getDynamicElementByContentDesc("Sign Up");
+        signUpElement.click();
+        ReusableMethods.wait(1);
+        assertTrue(signUpPageText.isDisplayed());
+        WebElement signInElement=locator.getDynamicElementByContentDesc("Sign In");
+        signInElement.click();
+    }
+    public void loadLoginPage(){
+        ReusableMethods.wait(1);
+        WebElement profileIcon= locator.getDynamicElementByAccessibilityId("Profile");
+        profileIcon.click();
+        OptionsMet.clickButtonByDescription("Sign In");
+    }
+    public void enterEmailForLogin(String emailName){
+        useEmailText.click();
+        ReusableMethods.wait(1);
+        emailBox.click();
+        emailBox.sendKeys(ConfigReader.getProperty(emailName));
+        OptionsMet.hideKeyboard();
+    }
+    public void enterPasswordForLogin(){
+        passwordBox.click();
+        passwordBox.sendKeys(ConfigReader.getProperty("Password"));
+        OptionsMet.hideKeyboard();
+    }
+    public void verifyProfilPage(String profilName){
+        profilIcon.click();
+        ReusableMethods.wait(2);
+        OptionsMet.VerifyElementText("arzubuldu.manager@querycart.com");
+    }
+    public void elementTextIsDisplayed(String element){
+        WebElement elementLocate=locator.getDynamicElementByContentDesc(element);
+        assertTrue(elementLocate.isDisplayed());
+    }
+    public void swipeAndSelect(String element) throws InvalidMidiDataException {
+        boolean productFound = false;
+        while (!productFound) {
+            try {
+                OptionsMet.clickButtonByDescription(element);
+                ReusableMethods.wait(3);
+                productFound = true;
+            } catch (NoSuchElementException e) {
+                OptionsMet.swipe(1005, 922, 68, 918);
+                ReusableMethods.wait(1);
+            }}
+
+  
+ 
+  
+  <<<<<<< ahmet
+
+    public void verifyingAndClickEasyLinks(String easyLink){
+        WebElement easyLinks = getAppiumDriver().findElement(MobileBy.AndroidUIAutomator(
+                "new UiSelector().description(\"" + easyLink + "\")"
+        ));
+
+        assertTrue(easyLinks.isDisplayed());
+        easyLinks.click();
+    }
+
+    public void verifyRelevantPageEasyLink(String text){}
+   
+
+  
+      
+      
+      <<<<<<< harun
     public void wishList() {
         Actions actions = new Actions(getAppiumDriver());
         assertTrue(wishList.isDisplayed());
@@ -287,14 +393,10 @@ public class QueryCardPage {
         addToCart.click();
             ReusableMethods.wait(1);
         bag.click();
-
-
     }
 
     public void proceedToCheckoutClick() {
         proceedToCheckout.click();
-
-
     }
 
     public void pickupDeliveryVisibleActive() {
@@ -303,7 +405,6 @@ public class QueryCardPage {
         ReusableMethods.wait(1);
         assertTrue(delivery.isDisplayed());
         assertTrue(delivery.isEnabled());
-
     }
 
     public void adressisdisplayed() {
@@ -324,10 +425,8 @@ public class QueryCardPage {
         OptionsMet.hideKeyboard();
         ReusableMethods.wait(1);
         updateAdress.click();
-
-
-
     }
+  
 }
 
 
