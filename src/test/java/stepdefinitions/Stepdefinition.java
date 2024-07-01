@@ -126,6 +126,9 @@ public class Stepdefinition extends OptionsMet {
         card.editProfile(email,phoneNumber);
     }
 
+
+  
+ 
     //**US 004
 
     @When("Visitor displays {string} title")
@@ -172,7 +175,22 @@ public class Stepdefinition extends OptionsMet {
         ReusableMethods.wait(2);
         VerifyElementText("Error\n" + "Invalid credentials or you are blocked");
         ReusableMethods.wait(2);
+      }
+  
+  
+  
+  <<<<<<< ahmet
 
+
+    @Given("Sees {string} button at the bottom of the home page and clicks")
+    public void sees_button_at_the_bottom_of_the_home_page_and_clicks(String easyLink) {
+        ReusableMethods.wait(5);
+        card.verifyingAndClickEasyLinks(easyLink);
+        ReusableMethods.wait(5);
     }
+
+    @Given("Verifies visibility of {string} text on {string} page")
+    public void verifies_visibility_of_text_on_page(String string, String string2) {}
+  
 }
 

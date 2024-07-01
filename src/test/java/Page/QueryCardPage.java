@@ -1,9 +1,11 @@
 package Page;
 
 
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import lombok.Getter;
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -249,6 +251,7 @@ public class QueryCardPage {
         assertTrue(profileUpdateAlert.isDisplayed());
     }
 
+
     //////////ARZU///////////////
 
     public void getLoginwithParameter(String emailName){
@@ -309,9 +312,24 @@ public class QueryCardPage {
             } catch (NoSuchElementException e) {
                 OptionsMet.swipe(1005, 922, 68, 918);
                 ReusableMethods.wait(1);
-            }
-        }
+            }}
+
+  
+ 
+  
+  <<<<<<< ahmet
+
+    public void verifyingAndClickEasyLinks(String easyLink){
+        WebElement easyLinks = getAppiumDriver().findElement(MobileBy.AndroidUIAutomator(
+                "new UiSelector().description(\"" + easyLink + "\")"
+        ));
+
+        assertTrue(easyLinks.isDisplayed());
+        easyLinks.click();
     }
+
+    public void verifyRelevantPageEasyLink(String text){}
+   
 }
 
 
