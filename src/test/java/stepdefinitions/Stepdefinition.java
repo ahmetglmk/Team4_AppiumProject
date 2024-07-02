@@ -278,6 +278,15 @@ public class Stepdefinition extends OptionsMet {
         card.categoryJuniorClick();
     }
 
+    @Given("Order summary should be displayed under the title \\(subtotal, tax, shipping charge, discount)")
+    public void order_summary_should_be_displayed_under_the_title_subtotal_tax_shipping_charge_discount() {
+        card.orderSummaryisDisplayed();
+    }
+    @Given("save pay button must be visible and active")
+    public void save_pay_button_must_be_visible_and_active() {
+        card.savePayisDisibleActive();
+
+    }
 
 }
 

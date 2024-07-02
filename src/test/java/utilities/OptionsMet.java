@@ -109,5 +109,11 @@ public class OptionsMet {
         element.click();
 
     }
+    public static void VerifyElementTextisEnabled(String description) {
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
+        WebElement webElement = driver.findElement(MobileBy.AndroidUIAutomator(
+                "new UiSelector().description(\"" + description + "\")"));
+        assertTrue(webElement.isEnabled());
+    }
 }
 
