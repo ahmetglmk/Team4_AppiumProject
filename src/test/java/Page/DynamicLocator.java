@@ -19,4 +19,5 @@ public class DynamicLocator {
     public WebElement getDynamicElementByAccessibilityId(String idName){
         return getAppiumDriver().findElement(By.id(idName));
     }
+
 }
