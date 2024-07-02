@@ -142,6 +142,7 @@ public class QueryCardPage {
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
     private WebElement bosSatır;
 
+
     @AndroidFindBy(xpath = "(//*[@class='android.widget.ImageView'])[1]")
     private WebElement siteLogo;
 
@@ -513,6 +514,31 @@ public class QueryCardPage {
 
     public void backButton(){
         OptionsMet.clickAndVerify(backButton);
+    }
+
+    public void orderSummaryisDisplayed() {
+        Actions actions = new Actions(Driver.getAppiumDriver());
+        for (int i = 0; i < 10; i++) {
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+
+        }
+        OptionsMet.VerifyElementText("Subtotal");
+        ReusableMethods.wait(1);
+        OptionsMet.VerifyElementText("Tax");
+        ReusableMethods.wait(1);
+        OptionsMet.VerifyElementText("Shipping Charge");
+        ReusableMethods.wait(1);
+        OptionsMet.VerifyElementText("Discount");
+        ReusableMethods.wait(1);
+        OptionsMet.VerifyElementText("Total");
+        ReusableMethods.wait(1);
+    }
+
+    public void savePayisDisibleActive() {
+        OptionsMet.VerifyElementText("Save & Pay");
+        ReusableMethods.wait(1);
+        OptionsMet.VerifyElementTextisEnabled("Save & Pay");
+        ReusableMethods.wait(2);
     }
 }
 
