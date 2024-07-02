@@ -25,103 +25,154 @@ import static utilities.OptionsMet.xPathElementClick;
 
 @Getter
 public class QueryCardPage {
-   public QueryCardPage(){
-       PageFactory.initElements(new AppiumFieldDecorator(getAppiumDriver()),this);
+    public QueryCardPage() {
+        PageFactory.initElements(new AppiumFieldDecorator(getAppiumDriver()), this);
 
     }
+
     DynamicLocator locator = new DynamicLocator();
 
-    @AndroidFindBy(xpath = "(//android.widget.ImageView[1])[1]") private WebElement queryCardLogoElement;
-   @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Profile\")")
-   private WebElement profileButton;
-   @AndroidFindBy (xpath = "(//android.widget.ImageView[1])[2]")
-   private WebElement searchBoxElement;
-   @AndroidFindBy (uiAutomator = "new UiSelector().description(\"Sign In\").instance(1)")
-   private WebElement signInLoginButton;
-   @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
-   private WebElement phoneTextBox;
-   @AndroidFindBy(accessibility = "See All")
-   private WebElement seeAllIconElement;
-   @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(1)")
-   private WebElement passwordTextBox;
-   @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(2)")
-   private WebElement rememberMeCheckBox;
-   @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.View\").instance(4)")
-   private WebElement addWishListToast;
-   @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Blossom Boutique\"]")
-   private   WebElement firstPopularBrands;
-   @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
-   private WebElement signUpNameBox;
-   @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Success\n" +
-           "Register Successfully.\")")
-   private WebElement successRegisterAlert;
-   @AndroidFindBy(uiAutomator = "new UiSelector().description(\"*Use Email Instead\")")
-   private WebElement useEmailButton;
-   @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Enter Valid Email Address\")")
-   private WebElement invalidEmailText;
-   @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Error\n" +
-           "The phone field must be at least 7 characters.\")")
-   private WebElement invalidPhoneNumberAlert;
-   @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.View\").instance(3)")
-   private WebElement invalidPasswordAlert;
-   @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Sing In To See Your Info\")")
-   private WebElement signInToSeeText;
-   @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Sign In\")")
-   private WebElement signInButton;
-   @AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
-   private WebElement editPageEmailBox;
-   @AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[3]")
-   private WebElement editPagePhoneBox;
-   @AndroidFindBy(accessibility = "Save Changes")
-   private WebElement editPageSaveChanges;
-   @AndroidFindBy(accessibility = "PROFILE_UPDATE\\nProfile Updated Successfully")
-   private WebElement profileUpdateAlert;
+    @AndroidFindBy(xpath = "(//android.widget.ImageView[1])[1]")
+    private WebElement queryCardLogoElement;
 
-   @AndroidFindBy(accessibility ="Flower Print Foil T-shirt\n0 (0  Reviews)\n$65.00")
-   private WebElement productclick;
-    @AndroidFindBy (xpath = "//android.widget.ImageView[@content-desc=\"Wishlist\"]")
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Profile\")")
+    private WebElement profileButton;
+
+    @AndroidFindBy(xpath = "(//android.widget.ImageView[1])[2]")
+    private WebElement searchBoxElement;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Sign In\").instance(1)")
+    private WebElement signInLoginButton;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
+    private WebElement phoneTextBox;
+
+    @AndroidFindBy(accessibility = "See All")
+    private WebElement seeAllIconElement;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(1)")
+    private WebElement passwordTextBox;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(2)")
+    private WebElement rememberMeCheckBox;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.View\").instance(4)")
+    private WebElement addWishListToast;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Blossom Boutique\"]")
+    private WebElement firstPopularBrands;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
+    private WebElement signUpNameBox;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Success\n" +
+            "Register Successfully.\")")
+    private WebElement successRegisterAlert;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"*Use Email Instead\")")
+    private WebElement useEmailButton;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Enter Valid Email Address\")")
+    private WebElement invalidEmailText;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Error\n" +
+            "The phone field must be at least 7 characters.\")")
+    private WebElement invalidPhoneNumberAlert;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.View\").instance(3)")
+    private WebElement invalidPasswordAlert;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Sing In To See Your Info\")")
+    private WebElement signInToSeeText;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Sign In\")")
+    private WebElement signInButton;
+
+    @AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
+    private WebElement editPageEmailBox;
+
+    @AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[3]")
+    private WebElement editPagePhoneBox;
+
+    @AndroidFindBy(accessibility = "Save Changes")
+    private WebElement editPageSaveChanges;
+
+    @AndroidFindBy(accessibility = "PROFILE_UPDATE\\nProfile Updated Successfully")
+    private WebElement profileUpdateAlert;
+
+    @AndroidFindBy(accessibility = "Flower Print Foil T-shirt\n0 (0  Reviews)\n$65.00")
+    private WebElement productclick;
+
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Wishlist\"]")
     private WebElement wishList;
-    @AndroidFindBy (xpath = "//android.view.View[@content-desc=\"S\"]")
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"S\"]")
     private WebElement productsize;
-    @AndroidFindBy (xpath = "//android.widget.ImageView[@content-desc=\"Add To Cart\"]")
+
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Add To Cart\"]")
     private WebElement addToCart;
-    @AndroidFindBy  (xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView")
+
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView")
     private WebElement bag;
-    @AndroidFindBy (xpath = "//android.view.View[@content-desc=\"Proceed to Checkout\"]")
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Proceed to Checkout\"]")
     private WebElement proceedToCheckout;
-    @AndroidFindBy (xpath = "//android.view.View[@content-desc=\"Pick Up\"]")
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Pick Up\"]")
     private WebElement pickUp;
-    @AndroidFindBy (xpath = "//android.view.View[@content-desc=\"Delivery\"]")
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Delivery\"]")
     private WebElement delivery;
-    @AndroidFindBy (xpath = "//android.view.View[@content-desc=\"Shipping Address\"]")
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Shipping Address\"]")
     private WebElement shippingAdress;
-    @AndroidFindBy (xpath = "//android.widget.ImageView[@content-desc=\"Edit\"]")
+
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Edit\"]")
     private WebElement adressEditable;
+
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(1)")
     private WebElement adressEditable1;
+
     @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Update Address\").instance(1)")
     private WebElement updateAdress;
+
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"oske\")")
     private WebElement ilksatırclick;
-    @AndroidFindBy (uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
     private WebElement bosSatır;
 
+    @AndroidFindBy(xpath = "(//*[@class='android.widget.ImageView'])[1]")
+    private WebElement siteLogo;
 
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Category\"]")
+    private WebElement categoryButton;
 
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Men\"]")
+    private WebElement categoryMenButton;
 
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Women\"]")
+    private WebElement categoryWomenButton;
 
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Juniors\"]")
+    private WebElement categoryJuniorButton;
 
+    @AndroidFindBy(xpath = "(//*[@class='android.widget.ImageView'])[3]")
+    private WebElement categoryFiltre;
+
+    @AndroidFindBy(xpath = "(//*[@class='android.widget.ImageView'])[1]")
+    private WebElement backButton;
 
 
     //Arzu
     @AndroidFindBy(xpath = "//*[@content-desc='Categories']")
-    private  WebElement categoriesText;
+    private WebElement categoriesText;
     @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Men T-Shirt\"]")
     private WebElement categoriesSubMenus;
     @AndroidFindBy(accessibility = "*Use Email Instead")
     private WebElement useEmailText;
     @AndroidFindBy(accessibility = "Profile")
-    public   WebElement profilIcon;
+    public WebElement profilIcon;
     @AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[1]")
     private WebElement emailBox;
     @AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
@@ -132,20 +183,18 @@ public class QueryCardPage {
     private WebElement signUpPageText;
 
 
+    public void LogoGorunurTest() {
 
-
-
-    public void LogoGorunurTest(){
-
-            try {
-               Thread.sleep(6000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            assertTrue(queryCardLogoElement.isDisplayed());
-            queryCardLogoElement.click();
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
-    public  void Login (String phoneNumber,String password){
+        assertTrue(queryCardLogoElement.isDisplayed());
+        queryCardLogoElement.click();
+    }
+
+    public void Login(String phoneNumber, String password) {
         Actions actions = new Actions(getAppiumDriver());
         phoneTextBoxClickAndSendKeys(ConfigReader.getProperty(phoneNumber));
         // Telefon numarası alanından sonra Tab ile şifre alanına geç
@@ -158,27 +207,30 @@ public class QueryCardPage {
     }
 
 
-    public void SearchBoxGorunurlukClickTest(){
+    public void SearchBoxGorunurlukClickTest() {
         assertTrue(searchBoxElement.isDisplayed());
         searchBoxElement.click();
     }
-    public void phoneTextBoxClickAndSendKeys(String phoneNumber){
+
+    public void phoneTextBoxClickAndSendKeys(String phoneNumber) {
         assertTrue(phoneTextBox.isDisplayed());
         phoneTextBox.click();
         phoneTextBox.sendKeys(phoneNumber);
     }
-    public void signInLoginClick(){
+
+    public void signInLoginClick() {
         assertTrue(signInLoginButton.isDisplayed());
         signInLoginButton.click();
     }
-    public void wishListToast(){
+
+    public void wishListToast() {
         System.out.println(addWishListToast.getText());
         assertTrue(addWishListToast.isEnabled());
     }
 
     public void seePopularBrands() throws InvalidMidiDataException {
         for (int i = 0; i < 2; i++) {
-            swipe(600,2500,600,300);
+            swipe(600, 2500, 600, 300);
         }
         assertTrue(firstPopularBrands.isDisplayed());
     }
@@ -291,54 +343,61 @@ public class QueryCardPage {
 
     //////////ARZU///////////////
 
-    public void getLoginwithParameter(String emailName){
+    public void getLoginwithParameter(String emailName) {
         ReusableMethods.wait(2);
         enterEmailForLogin(emailName);
         enterPasswordForLogin();
-        signInLoginClick();}
+        signInLoginClick();
+    }
 
-    public void verifySignInPageElement(){
-        WebElement forgotPasswordElement=locator.getDynamicElementByContentDesc("Forgot Password");
+    public void verifySignInPageElement() {
+        WebElement forgotPasswordElement = locator.getDynamicElementByContentDesc("Forgot Password");
         forgotPasswordElement.click();
         ReusableMethods.wait(1);
-        WebElement backToSignInElement=locator.getDynamicElementByContentDesc("Back to sign in");
+        WebElement backToSignInElement = locator.getDynamicElementByContentDesc("Back to sign in");
         assertTrue(backToSignInElement.isDisplayed());
         backToSignInElement.click();
         ReusableMethods.wait(1);
-        WebElement signUpElement= locator.getDynamicElementByContentDesc("Sign Up");
+        WebElement signUpElement = locator.getDynamicElementByContentDesc("Sign Up");
         signUpElement.click();
         ReusableMethods.wait(1);
         assertTrue(signUpPageText.isDisplayed());
-        WebElement signInElement=locator.getDynamicElementByContentDesc("Sign In");
+        WebElement signInElement = locator.getDynamicElementByContentDesc("Sign In");
         signInElement.click();
     }
-    public void loadLoginPage(){
+
+    public void loadLoginPage() {
         ReusableMethods.wait(1);
-        WebElement profileIcon= locator.getDynamicElementByAccessibilityId("Profile");
+        WebElement profileIcon = locator.getDynamicElementByAccessibilityId("Profile");
         profileIcon.click();
         OptionsMet.clickButtonByDescription("Sign In");
     }
-    public void enterEmailForLogin(String emailName){
+
+    public void enterEmailForLogin(String emailName) {
         useEmailText.click();
         ReusableMethods.wait(1);
         emailBox.click();
         emailBox.sendKeys(ConfigReader.getProperty(emailName));
         OptionsMet.hideKeyboard();
     }
-    public void enterPasswordForLogin(){
+
+    public void enterPasswordForLogin() {
         passwordBox.click();
         passwordBox.sendKeys(ConfigReader.getProperty("Password"));
         OptionsMet.hideKeyboard();
     }
-    public void verifyProfilPage(String profilName){
+
+    public void verifyProfilPage(String profilName) {
         profilIcon.click();
         ReusableMethods.wait(2);
         OptionsMet.VerifyElementText("arzubuldu.manager@querycart.com");
     }
-    public void elementTextIsDisplayed(String element){
-        WebElement elementLocate=locator.getDynamicElementByContentDesc(element);
+
+    public void elementTextIsDisplayed(String element) {
+        WebElement elementLocate = locator.getDynamicElementByContentDesc(element);
         assertTrue(elementLocate.isDisplayed());
     }
+
     public void swipeAndSelect(String element) throws InvalidMidiDataException {
         boolean productFound = false;
         while (!productFound) {
@@ -349,14 +408,11 @@ public class QueryCardPage {
             } catch (NoSuchElementException e) {
                 OptionsMet.swipe(1005, 922, 68, 918);
                 ReusableMethods.wait(1);
-            }}
+            }
+        }
+    }
 
-  
- 
-  
-  <<<<<<< ahmet
-
-    public void verifyingAndClickEasyLinks(String easyLink){
+    public void verifyingAndClickEasyLinks(String easyLink) {
         WebElement easyLinks = getAppiumDriver().findElement(MobileBy.AndroidUIAutomator(
                 "new UiSelector().description(\"" + easyLink + "\")"
         ));
@@ -365,13 +421,10 @@ public class QueryCardPage {
         easyLinks.click();
     }
 
-    public void verifyRelevantPageEasyLink(String text){}
-   
+    public void verifyRelevantPageEasyLink(String text) {
+    }
 
-  
-      
-      
-      <<<<<<< harun
+
     public void wishList() {
         Actions actions = new Actions(getAppiumDriver());
         assertTrue(wishList.isDisplayed());
@@ -385,13 +438,13 @@ public class QueryCardPage {
         ReusableMethods.wait(1);
 
 
-            Actions actions = new Actions(Driver.getAppiumDriver());
-            for (int i = 0; i < 10; i++) {
-                actions.sendKeys(Keys.ARROW_DOWN).perform();
+        Actions actions = new Actions(Driver.getAppiumDriver());
+        for (int i = 0; i < 10; i++) {
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
 
-            }
+        }
         addToCart.click();
-            ReusableMethods.wait(1);
+        ReusableMethods.wait(1);
         bag.click();
     }
 
@@ -426,7 +479,41 @@ public class QueryCardPage {
         ReusableMethods.wait(1);
         updateAdress.click();
     }
-  
+
+    public void siteLogo() {
+        OptionsMet.clickAndVerify(siteLogo);
+    }
+
+    public void categoriesisDisplayed() {
+        OptionsMet.clickAndVerify( categoryButton);
+    }
+
+    public void categoryMenButtonDisplayed(){
+        assertTrue(categoryMenButton.isDisplayed());
+        assertTrue(categoryMenButton.isEnabled());
+    }
+
+    public void categoryWomenButtonDisplayed(){
+        assertTrue(categoryWomenButton.isDisplayed());
+        assertTrue(categoryWomenButton.isEnabled());
+    }
+
+    public void categoryJuniorClick(){
+        categoryJuniorButton.click();
+    }
+    public void categoryJuniorButtonDisplayed(){
+        assertTrue(categoryJuniorButton.isDisplayed());
+        assertTrue(categoryJuniorButton.isEnabled());
+    }
+
+    public void filtreisDisplayed(){
+        assertTrue(categoryFiltre.isDisplayed());
+        assertTrue(categoryFiltre.isEnabled());
+    }
+
+    public void backButton(){
+        OptionsMet.clickAndVerify(backButton);
+    }
 }
 
 
