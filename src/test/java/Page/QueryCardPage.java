@@ -662,7 +662,6 @@ public class QueryCardPage {
         signInLoginButton.click();
     }
 
-
     public void verifiesAnyElement(String element) {
         ReusableMethods.wait(2);
         OptionsMet.VerifyElementText(element);
