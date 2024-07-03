@@ -282,6 +282,7 @@ public class Stepdefinition extends OptionsMet {
     public void order_summary_should_be_displayed_under_the_title_subtotal_tax_shipping_charge_discount() {
         card.orderSummaryisDisplayed();
     }
+
     @Given("save pay button must be visible and active")
     public void save_pay_button_must_be_visible_and_active() {
         card.savePayisDisibleActive();
@@ -292,7 +293,7 @@ public class Stepdefinition extends OptionsMet {
     @Given("Verifies the visibility of the {string} button on the home page and the visibility of the text {string} on the page by clicking it")
     public void verifies_the_visibility_of_the_button_on_the_home_page_and_the_visibility_of_the_text_on_the_page_by_clicking_it(String easyLink, String text) {
         ReusableMethods.wait(7);
-        card.verifyingEasyLink(easyLink,text);
+        card.verifyingEasyLink(easyLink, text);
         ReusableMethods.wait(7);
     }
 
@@ -324,15 +325,17 @@ public class Stepdefinition extends OptionsMet {
     public void click_on_the_desired_product_and_view_it() {
         card.selectAndDisplayProduct();
     }
+
     @Given("User clicks the button with description Add To Cart")
     public void user_clicks_the_button_with_description_add_to_cart() {
         card.addToCartM();
 
+    }
 
     @Given("The user logs in using the name {string} and {string}")
     public void the_user_logs_in_using_the_name_and(String userName, String password) {
         ReusableMethods.wait(4);
-        card.logInWithMail(userName,password);
+        card.logInWithMail(userName, password);
     }
 
     @Given("Verifies the {string} text on the page")

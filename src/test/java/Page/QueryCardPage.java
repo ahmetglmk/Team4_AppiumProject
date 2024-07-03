@@ -617,7 +617,7 @@ public class QueryCardPage {
         for (String category : categories) {
             i++;
             OptionsMet.VerifyElementText(category);
-            if (i == 3 || i == 6 || i == 9 || i == 12 || i == 15|| i == 18 || i == 21|| i == 24) {
+            if (i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21 || i == 24) {
                 OptionsMet.swipe(1282, 1156, 360, 1156);
                 ReusableMethods.wait(1);
             }
@@ -640,8 +640,9 @@ public class QueryCardPage {
         }
         addToCart.click();
 
+    }
 
-    public void logInWithMail (String userName, String password){
+    public void logInWithMail(String userName, String password) {
         ReusableMethods.wait(2);
 
         OptionsMet.clickButtonByDescription("Profile");
@@ -650,7 +651,7 @@ public class QueryCardPage {
         ReusableMethods.wait(2);
 
         emailBox.click();
-        emailBox.sendKeys(userName+".manager@querycart.com");
+        emailBox.sendKeys(userName + ".manager@querycart.com");
         OptionsMet.hideKeyboard();
         ReusableMethods.wait(2);
 
@@ -662,12 +663,12 @@ public class QueryCardPage {
     }
 
 
-    public void verifiesAnyElement(String element){
+    public void verifiesAnyElement(String element) {
         ReusableMethods.wait(2);
         OptionsMet.VerifyElementText(element);
     }
 
-    public void verifyOrderHistoryInMyAccountPage(){
+    public void verifyOrderHistoryInMyAccountPage() {
         ReusableMethods.wait(2);
         assertTrue(firstOrderInMyAccountPage.isDisplayed() && firstOrderInMyAccountPage.isEnabled());
 
