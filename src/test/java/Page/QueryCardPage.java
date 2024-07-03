@@ -196,6 +196,9 @@ public class QueryCardPage {
     @AndroidFindBy(xpath = "(//*[@class='android.view.View'])[10]")
     private WebElement firstProductInSearch;
 
+    @AndroidFindBy(xpath = "(//*[@class='android.widget.ImageView'])[6]")
+    private WebElement firstOrderInMyAccountPage;
+
 
     public void LogoGorunurTest() {
 
@@ -600,6 +603,7 @@ public class QueryCardPage {
 
     }
 
+
     public void womenScroll() throws InvalidMidiDataException {
         ReusableMethods.wait(5);
         for (int i = 0; i < 4; i++) {
@@ -635,6 +639,38 @@ public class QueryCardPage {
             actions.sendKeys(Keys.ARROW_DOWN).perform();
         }
         addToCart.click();
+
+
+    public void logInWithMail (String userName, String password){
+        ReusableMethods.wait(2);
+
+        OptionsMet.clickButtonByDescription("Profile");
+        OptionsMet.clickButtonByDescription("Sign In");
+        useEmailText.click();
+        ReusableMethods.wait(2);
+
+        emailBox.click();
+        emailBox.sendKeys(userName+".manager@querycart.com");
+        OptionsMet.hideKeyboard();
+        ReusableMethods.wait(2);
+
+        passwordBox.click();
+        passwordBox.sendKeys(ConfigReader.getProperty(password));
+        OptionsMet.hideKeyboard();
+
+        signInLoginButton.click();
+    }
+
+
+    public void verifiesAnyElement(String element){
+        ReusableMethods.wait(2);
+        OptionsMet.VerifyElementText(element);
+    }
+
+    public void verifyOrderHistoryInMyAccountPage(){
+        ReusableMethods.wait(2);
+        assertTrue(firstOrderInMyAccountPage.isDisplayed() && firstOrderInMyAccountPage.isEnabled());
+
     }
 }
 
