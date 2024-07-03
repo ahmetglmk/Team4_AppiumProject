@@ -315,6 +315,20 @@ public class Stepdefinition extends OptionsMet {
     }
 
 
+    @Given("Scroll until you find the category in the Categories section.")
+    public void scroll_until_you_find_the_women_category_in_the_categories_section() throws InvalidMidiDataException {
+        card.womenScroll();
+    }
+
+    @Given("Click on the desired product and view it.")
+    public void click_on_the_desired_product_and_view_it() {
+        card.selectAndDisplayProduct();
+    }
+    @Given("User clicks the button with description Add To Cart")
+    public void user_clicks_the_button_with_description_add_to_cart() {
+        card.addToCartM();
+
+
     @Given("The user logs in using the name {string} and {string}")
     public void the_user_logs_in_using_the_name_and(String userName, String password) {
         ReusableMethods.wait(4);
@@ -329,6 +343,7 @@ public class Stepdefinition extends OptionsMet {
     @Given("Verifies that past orders are displayed in the Order History section")
     public void verifies_that_past_orders_are_displayed_in_the_order_history_section() {
         card.verifyOrderHistoryInMyAccountPage();
+
     }
 
 }
