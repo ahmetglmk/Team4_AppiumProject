@@ -639,6 +639,7 @@ public class QueryCardPage {
             actions.sendKeys(Keys.ARROW_DOWN).perform();
         }
         addToCart.click();
+    }
 
 
     public void logInWithMail (String userName, String password){

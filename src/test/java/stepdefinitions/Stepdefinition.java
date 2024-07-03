@@ -327,6 +327,7 @@ public class Stepdefinition extends OptionsMet {
     @Given("User clicks the button with description Add To Cart")
     public void user_clicks_the_button_with_description_add_to_cart() {
         card.addToCartM();
+    }
 
 
     @Given("The user logs in using the name {string} and {string}")
