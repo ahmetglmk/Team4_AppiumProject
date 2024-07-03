@@ -673,6 +673,7 @@ public class QueryCardPage {
         assertTrue(firstOrderInMyAccountPage.isDisplayed() && firstOrderInMyAccountPage.isEnabled());
 
     }
+
 }
 
 
