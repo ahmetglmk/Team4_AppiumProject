@@ -2,10 +2,12 @@ package Page;
 
 
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import lombok.Getter;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -18,10 +20,10 @@ import utilities.ReusableMethods;
 
 import javax.sound.midi.InvalidMidiDataException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static utilities.Driver.getAppiumDriver;
-import static utilities.OptionsMet.swipe;
-import static utilities.OptionsMet.xPathElementClick;
+import static utilities.OptionsMet.*;
 
 @Getter
 public class QueryCardPage {
@@ -165,6 +167,12 @@ public class QueryCardPage {
     @AndroidFindBy(xpath = "(//*[@class='android.widget.ImageView'])[1]")
     private WebElement backButton;
 
+    @AndroidFindBy(xpath = "(//*[@class='android.view.View'])[10]")
+    private WebElement productOne;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"M\"]")
+    private WebElement productsizeM;
+
 
     //Arzu
     @AndroidFindBy(xpath = "//*[@content-desc='Categories']")
@@ -185,7 +193,7 @@ public class QueryCardPage {
     private WebElement signUpPageText;
 
     // Ahmet
-    @AndroidFindBy (xpath = "(//*[@class='android.view.View'])[10]")
+    @AndroidFindBy(xpath = "(//*[@class='android.view.View'])[10]")
     private WebElement firstProductInSearch;
 
 
@@ -491,33 +499,34 @@ public class QueryCardPage {
     }
 
     public void categoriesisDisplayed() {
-        OptionsMet.clickAndVerify( categoryButton);
+        OptionsMet.clickAndVerify(categoryButton);
     }
 
-    public void categoryMenButtonDisplayed(){
+    public void categoryMenButtonDisplayed() {
         assertTrue(categoryMenButton.isDisplayed());
         assertTrue(categoryMenButton.isEnabled());
     }
 
-    public void categoryWomenButtonDisplayed(){
+    public void categoryWomenButtonDisplayed() {
         assertTrue(categoryWomenButton.isDisplayed());
         assertTrue(categoryWomenButton.isEnabled());
     }
 
-    public void categoryJuniorClick(){
+    public void categoryJuniorClick() {
         categoryJuniorButton.click();
     }
-    public void categoryJuniorButtonDisplayed(){
+
+    public void categoryJuniorButtonDisplayed() {
         assertTrue(categoryJuniorButton.isDisplayed());
         assertTrue(categoryJuniorButton.isEnabled());
     }
 
-    public void filtreisDisplayed(){
+    public void filtreisDisplayed() {
         assertTrue(categoryFiltre.isDisplayed());
         assertTrue(categoryFiltre.isEnabled());
     }
 
-    public void backButton(){
+    public void backButton() {
         OptionsMet.clickAndVerify(backButton);
     }
 
@@ -548,7 +557,7 @@ public class QueryCardPage {
 
 
     // Ahmet
-    public void verifyingEasyLink(String easyLink, String text){
+    public void verifyingEasyLink(String easyLink, String text) {
         OptionsMet.VerifyElementText(easyLink);
         ReusableMethods.wait(2);
         OptionsMet.clickButtonByDescription(easyLink);
@@ -557,24 +566,24 @@ public class QueryCardPage {
         ReusableMethods.wait(2);
     }
 
-    public void verifyingClassNameElement(String className, int instance, String textContent){
+    public void verifyingClassNameElement(String className, int instance, String textContent) {
         ReusableMethods.wait(2);
-        assertTrue(locator.getDynamicElementByClassNameWithInstance(className,instance).isDisplayed());
+        assertTrue(locator.getDynamicElementByClassNameWithInstance(className, instance).isDisplayed());
         ReusableMethods.wait(3);
-        locator.getDynamicElementByClassNameWithInstance(className,instance).click();
+        locator.getDynamicElementByClassNameWithInstance(className, instance).click();
         ReusableMethods.wait(3);
         OptionsMet.VerifyElementText(textContent);
         ReusableMethods.wait(2);
     }
 
-    public void goesToDesiredPage(String desiredPage){
+    public void goesToDesiredPage(String desiredPage) {
         ReusableMethods.wait(3);
         getAppiumDriver().navigate().back();
         OptionsMet.clickButtonByDescription(desiredPage);
         ReusableMethods.wait(3);
     }
 
-    public void verifiesSearchBoxElement(String product){
+    public void verifiesSearchBoxElement(String product) {
         WebElement searchBox = locator.getDynamicElementByClassName("android.widget.EditText");
 
         assertTrue(searchBox.isDisplayed());
@@ -589,6 +598,43 @@ public class QueryCardPage {
         assertTrue(firstProductInSearch.isDisplayed());
         ReusableMethods.wait(3);
 
+    }
+
+    public void womenScroll() throws InvalidMidiDataException {
+        ReusableMethods.wait(5);
+        for (int i = 0; i < 4; i++) {
+            OptionsMet.swipe(1230, 1156, 120, 1156);
+        }
+        String[] categories = {
+                "Women", "Women Clothing", "Woman Dresses - Skirts", "Woman T-shirt", "Woman Trousers",
+                "Woman Coat", "Women Shoes", "Women Casual Shoes", "Women Classic Shoes", "Women Sneakers",
+                "Women Accessories", "Women Bags", "Women Watch", "Women Jewelry"};
+        int i = 0;
+        for (String category : categories) {
+            i++;
+            OptionsMet.VerifyElementText(category);
+            if (i == 3 || i == 6 || i == 9 || i == 12 || i == 15|| i == 18 || i == 21|| i == 24) {
+                OptionsMet.swipe(1282, 1156, 360, 1156);
+                ReusableMethods.wait(1);
+            }
+            By degisken = MobileBy.AndroidUIAutomator("new UiSelector().description(\"" + category + "\")");
+            assertTrue(degisken.toString().contains(category));
+        }
+    }
+
+    public void selectAndDisplayProduct() {
+        assertTrue(productOne.isDisplayed());
+        productOne.click();
+    }
+
+    public void addToCartM() {
+        productsizeM.click();
+
+        Actions actions = new Actions(Driver.getAppiumDriver());
+        for (int i = 0; i < 10; i++) {
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+        }
+        addToCart.click();
     }
 }
 
