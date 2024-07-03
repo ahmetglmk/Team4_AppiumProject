@@ -31,6 +31,7 @@ public class QueryCardPage {
     }
 
     DynamicLocator locator = new DynamicLocator();
+    Actions actions = new Actions(getAppiumDriver());
 
     @AndroidFindBy(xpath = "(//android.widget.ImageView[1])[1]")
     private WebElement queryCardLogoElement;
@@ -182,6 +183,10 @@ public class QueryCardPage {
     private WebElement verifyProfil;
     @AndroidFindBy(xpath = "(//android.view.View[@content-desc=\"Sign Up\"])[1]")
     private WebElement signUpPageText;
+
+    // Ahmet
+    @AndroidFindBy (xpath = "(//*[@class='android.view.View'])[10]")
+    private WebElement firstProductInSearch;
 
 
     public void LogoGorunurTest() {
@@ -539,6 +544,51 @@ public class QueryCardPage {
         ReusableMethods.wait(1);
         OptionsMet.VerifyElementTextisEnabled("Save & Pay");
         ReusableMethods.wait(2);
+    }
+
+
+    // Ahmet
+    public void verifyingEasyLink(String easyLink, String text){
+        OptionsMet.VerifyElementText(easyLink);
+        ReusableMethods.wait(2);
+        OptionsMet.clickButtonByDescription(easyLink);
+        ReusableMethods.wait(2);
+        OptionsMet.VerifyElementText(text);
+        ReusableMethods.wait(2);
+    }
+
+    public void verifyingClassNameElement(String className, int instance, String textContent){
+        ReusableMethods.wait(2);
+        assertTrue(locator.getDynamicElementByClassNameWithInstance(className,instance).isDisplayed());
+        ReusableMethods.wait(3);
+        locator.getDynamicElementByClassNameWithInstance(className,instance).click();
+        ReusableMethods.wait(3);
+        OptionsMet.VerifyElementText(textContent);
+        ReusableMethods.wait(2);
+    }
+
+    public void goesToDesiredPage(String desiredPage){
+        ReusableMethods.wait(3);
+        getAppiumDriver().navigate().back();
+        OptionsMet.clickButtonByDescription(desiredPage);
+        ReusableMethods.wait(3);
+    }
+
+    public void verifiesSearchBoxElement(String product){
+        WebElement searchBox = locator.getDynamicElementByClassName("android.widget.EditText");
+
+        assertTrue(searchBox.isDisplayed());
+        ReusableMethods.wait(2);
+
+        ReusableMethods.wait(3);
+        searchBox.sendKeys(product);
+        actions.sendKeys(Keys.ENTER).perform();
+        ReusableMethods.wait(3);
+
+        ReusableMethods.wait(3);
+        assertTrue(firstProductInSearch.isDisplayed());
+        ReusableMethods.wait(3);
+
     }
 }
 

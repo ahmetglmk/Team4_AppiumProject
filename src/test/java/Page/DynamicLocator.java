@@ -1,5 +1,6 @@
 package Page;
 
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -18,6 +19,14 @@ public class DynamicLocator {
     }
     public WebElement getDynamicElementByAccessibilityId(String idName){
         return getAppiumDriver().findElement(By.id(idName));
+    }
+
+    public WebElement getDynamicElementByClassNameWithInstance(String contentClass, int instance){
+        return getAppiumDriver().findElement(MobileBy.AndroidUIAutomator("new UiSelector().className("+contentClass+").instance("+instance+")"));
+    }
+
+    public WebElement getDynamicElementByClassName(String contentClass){
+        return getAppiumDriver().findElement(MobileBy.AndroidUIAutomator("new UiSelector().className("+contentClass+")"));
     }
 
 }

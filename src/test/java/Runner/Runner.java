@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
                 "json:test-output/json-reports/cucumber.json",
                 "junit:test-output/htmlReport/cucumber.xml"},
         features = "src/test/resources/features",
-        glue = "stepdefinition",
-        tags = "@09" ,
+        glue = "stepdefinitions",
+        tags = "@a" ,
         dryRun = false
 
 

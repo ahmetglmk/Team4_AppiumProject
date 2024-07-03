@@ -288,5 +288,31 @@ public class Stepdefinition extends OptionsMet {
 
     }
 
+    //Ahmet
+    @Given("Verifies the visibility of the {string} button on the home page and the visibility of the text {string} on the page by clicking it")
+    public void verifies_the_visibility_of_the_button_on_the_home_page_and_the_visibility_of_the_text_on_the_page_by_clicking_it(String easyLink, String text) {
+        ReusableMethods.wait(7);
+        card.verifyingEasyLink(easyLink,text);
+        ReusableMethods.wait(7);
+    }
+
+    @Given("Sees the {string} and instance {int} button on the home page and when clicked, sees the text {string} on the page that opens.")
+    public void sees_the_button_on_the_home_page_and_when_clicked_sees_the_text_on_the_page_that_opens(String className, int instance, String textContetnt) {
+        ReusableMethods.wait(7);
+        card.verifyingClassNameElement(className, instance, textContetnt);
+        ReusableMethods.wait(7);
+    }
+
+
+    @Given("Goes to {string} page")
+    public void goes_to_page(String desiredPage) {
+        card.goesToDesiredPage(desiredPage);
+    }
+
+    @Given("Searches for the desired {string} product and sees the relevant product")
+    public void searches_for_the_desired_product_and_sees_the_relevant_product(String product) {
+        card.verifiesSearchBoxElement(product);
+    }
+
 }
 
