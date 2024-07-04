@@ -1,4 +1,4 @@
-@ahmet
+@ahme
 Feature:US_020 Verifying Change Password process
 
   Background: User opens the app and Logging to mobile application
