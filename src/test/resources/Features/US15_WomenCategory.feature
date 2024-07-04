@@ -16,16 +16,9 @@ Feature: As a registered user, I would like to be able to see the categories and
     * User clicks the button with description "Sign In"
     * As a "manager" with "Gamze" email get login
     * Displays menus under categories "Women Clothing"
+    * Verify that the filtering icon is active.
     * Click on the desired product and view it.
     * User clicks the button with description Add To Cart
     * User clicks the button with description "Favorite"
     * Driver turns off
-
-
-  Scenario: Filtering icons should be visible and active
-    * User clicks the button with description "Profile"
-    * User clicks the button with description "Sign In"
-    * As a "manager" with "Gamze" email get login
-    * Displays menus under categories "Women Clothing"
-    * Verify that the filtering icon is active.
-    * Driver turns off
+    

@@ -1,4 +1,4 @@
-
+@01
 Feature: As a user, I want to be able to access the site homepage.
 
   Background: User opens the app
