@@ -1,3 +1,4 @@
+@Harun
 Feature: US_19 Adress
   Background: User opens the app
     * User makes driver adjustments
@@ -22,7 +23,7 @@ Feature: US_19 Adress
     * address information should be editable
     * new address should be able to be added
     * Driver turns off
-  @Harun
+
   Scenario:Order summary should be displayed under Order Summary,Save & Pay button should be visible and active
     * User clicks the button with description "Profile"
     * User clicks the button with description "Sign In"
