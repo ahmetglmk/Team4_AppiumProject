@@ -1,3 +1,4 @@
+@09
 Feature: As a user, I want to be able to see all the categories on the site under the Categories heading.
 
   Background: User opens the app
