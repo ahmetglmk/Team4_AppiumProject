@@ -344,8 +344,11 @@ public class Stepdefinition extends OptionsMet {
     @Given("Verifies that past orders are displayed in the Order History section")
     public void verifies_that_past_orders_are_displayed_in_the_order_history_section() {
         card.verifyOrderHistoryInMyAccountPage();
-
     }
 
+    @Given("Sees the {string} and instance {int} element on the any page and when clicked and enters the text {string} on the page that opens.")
+    public void sees_the_and_instance_element_on_the_any_page_and_when_clicked_and_enters_the_text_on_the_page_that_opens(String className, Integer instance, String sendKeys) {
+        card.sendKeysWithClassName(className,instance,sendKeys);
+    }
 }
 

@@ -673,6 +673,14 @@ public class QueryCardPage {
         assertTrue(firstOrderInMyAccountPage.isDisplayed() && firstOrderInMyAccountPage.isEnabled());
 
     }
+
+    public void sendKeysWithClassName(String className, int instance, String sendKeys){
+        ReusableMethods.wait(2);
+        assertTrue(locator.getDynamicElementByClassNameWithInstance(className,instance).isDisplayed());
+        ReusableMethods.wait(3);
+        locator.getDynamicElementByClassNameWithInstance(className,instance).sendKeys(ConfigReader.getProperty(sendKeys));
+        ReusableMethods.wait(2);
+    }
 }
 
 
