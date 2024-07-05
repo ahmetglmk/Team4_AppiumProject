@@ -197,7 +197,6 @@ public class Stepdefinition extends OptionsMet {
     @Given("Verifies visibility of {string} text on {string} page")
     public void verifies_visibility_of_text_on_page(String string, String string2) {
     }
-
     // <<<<<<< harun
 
     @Given("Wishlist button {string} button must be visible and active")
@@ -226,6 +225,7 @@ public class Stepdefinition extends OptionsMet {
     @Given("address information should be displayed")
     public void address_information_should_be_displayed() {
         card.adressisdisplayed();
+        ReusableMethods.wait(1);
     }
 
     @Given("address information should be editable")
@@ -235,6 +235,7 @@ public class Stepdefinition extends OptionsMet {
 
     @Given("new address should be able to be added")
     public void new_address_should_be_able_to_be_added() {
+        card.adressAdded();
 
     }
 
@@ -287,6 +288,7 @@ public class Stepdefinition extends OptionsMet {
         card.savePayisDisibleActive();
 
     }
+
 
     //Ahmet
     @Given("Verifies the visibility of the {string} button on the home page and the visibility of the text {string} on the page by clicking it")
@@ -350,5 +352,26 @@ public class Stepdefinition extends OptionsMet {
     public void sees_the_and_instance_element_on_the_any_page_and_when_clicked_and_enters_the_text_on_the_page_that_opens(String className, Integer instance, String sendKeys) {
         card.sendKeysWithClassName(className,instance,sendKeys);
     }
-}
 
+
+    @Given("Favourite icon must be visible and active on products")
+    public void favourite_icon_must_be_visible_and_active_on_products() {
+        card.favouriteIconDisibleAndActive();
+    }
+    @Given("Verify that you have gone to the login page")
+    public void verify_that_you_have_gone_to_the_login_page() {
+        card.verifyLoginPageisdisplayed();
+    }
+
+    @Given("Click first product from home page")
+    public void click_first_product_from_home_page() {
+        ReusableMethods.wait(1);
+        card.firstProduct.click();
+    }
+    @Given("Verifies the visibility of first product {string} button on the home page and the visibility of the text {string} on the page by clicking it")
+    public void verifies_the_visibility_of_first_product_button_on_the_home_page_and_the_visibility_of_the_text_on_the_page_by_clicking_it(String section, String content) throws InvalidMidiDataException {
+        ReusableMethods.wait(3);
+        OptionsMet.swipe(499, 1986, 530, 841);
+        card.verifyingProductDetailsAndContents(section,content);
+    }
+}

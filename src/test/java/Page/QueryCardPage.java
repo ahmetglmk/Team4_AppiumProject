@@ -167,6 +167,8 @@ public class QueryCardPage {
     @AndroidFindBy(xpath = "(//*[@class='android.widget.ImageView'])[1]")
     private WebElement backButton;
 
+
+
     @AndroidFindBy(xpath = "(//*[@class='android.view.View'])[10]")
     private WebElement productOne;
 
@@ -191,6 +193,8 @@ public class QueryCardPage {
     private WebElement verifyProfil;
     @AndroidFindBy(xpath = "(//android.view.View[@content-desc=\"Sign Up\"])[1]")
     private WebElement signUpPageText;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Flower Print Foil T-shirt\n" + "0 (0  Reviews)\n" + "$65.00\")")
+    public WebElement firstProduct;
 
     // Ahmet
     @AndroidFindBy(xpath = "(//*[@class='android.view.View'])[10]")
@@ -198,6 +202,33 @@ public class QueryCardPage {
 
     @AndroidFindBy(xpath = "(//*[@class='android.widget.ImageView'])[6]")
     private WebElement firstOrderInMyAccountPage;
+
+
+    //harun
+    @AndroidFindBy(xpath = "new UiSelector().className(\"android.widget.ImageView\").instance(2)")
+    private WebElement favoriİcon ;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(0)")
+    private WebElement adresEditBack;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Add\")")
+    private WebElement adresAdd;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
+    private WebElement adressAddİlkSatır;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Country\")")
+    private WebElement adressCountry;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Albania\")")
+    private WebElement adressCountryAlbania;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"State\")")
+    private WebElement adressState;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Dibër County\")")
+    private WebElement adressStateDiber;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"City\")")
+    private WebElement adressCity;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Klos\")")
+    private WebElement adressCityKlos;
+    @AndroidFindBy(xpath= "(//*[@class='android.widget.ImageView'])[3]")
+    private WebElement favoriiiIcon;
+    @AndroidFindBy(xpath= "(//*[@class='android.view.View'])[7]")
+    private WebElement signInDisplayed;
 
 
     public void LogoGorunurTest() {
@@ -467,6 +498,7 @@ public class QueryCardPage {
 
     public void proceedToCheckoutClick() {
         proceedToCheckout.click();
+        ReusableMethods.wait(1);
     }
 
     public void pickupDeliveryVisibleActive() {
@@ -478,23 +510,41 @@ public class QueryCardPage {
     }
 
     public void adressisdisplayed() {
-        assertTrue(shippingAdress.isDisplayed());
+        OptionsMet.VerifyElementText("Shipping Address");
     }
 
     public void adresseditable() {
-        adressEditable.click();
-        adressEditable1.click();
-        ReusableMethods.wait(2);
         Actions actions = new Actions(getAppiumDriver());
-        ilksatırclick.click();
-        ilksatırclick.clear();
+         ReusableMethods.wait(1);
+
+        actions.click(adressEditable).perform();
+        ReusableMethods.wait(1);
+                actions.click(adressEditable1)
+                .perform();
 
 
         ReusableMethods.wait(2);
-        bosSatır.sendKeys("harun");
-        OptionsMet.hideKeyboard();
+
+
+        actions.click(ilksatırclick)
+                .sendKeys(Keys.TAB).perform();
         ReusableMethods.wait(1);
-        updateAdress.click();
+                actions.sendKeys(Keys.TAB).perform();
+                ReusableMethods.wait(1);
+        actions.sendKeys(Keys.TAB).perform();
+        ReusableMethods.wait(1);
+        actions.sendKeys(Keys.TAB).perform();
+        ReusableMethods.wait(1);
+        actions.sendKeys(Keys.TAB).perform();
+        ReusableMethods.wait(1);
+        actions.sendKeys(Keys.TAB).perform();
+        ReusableMethods.wait(1);
+                actions.sendKeys("7").perform();
+        actions.sendKeys(Keys.TAB).perform();
+        ReusableMethods.wait(1);
+                actions.sendKeys(Keys.ENTER)
+                .perform();
+        ReusableMethods.wait(4);
     }
 
     public void siteLogo() {
@@ -682,7 +732,79 @@ public class QueryCardPage {
         locator.getDynamicElementByClassNameWithInstance(className,instance).sendKeys(ConfigReader.getProperty(sendKeys));
         ReusableMethods.wait(2);
     }
+
+    //harun
+
+    public void favouriteIconDisibleAndActive() {
+        ReusableMethods.wait(2);
+        assertTrue(favoriiiIcon.isDisplayed());
+        ReusableMethods.wait(2);
+        assertTrue(favoriiiIcon.isEnabled());
+        ReusableMethods.wait(2);
+
+    }
+
+    public void adressAdded() {
+        ReusableMethods.wait(2);
+        adresEditBack.click();
+        ReusableMethods.wait(2);
+        adresAdd.click();
+        ReusableMethods.wait(2);
+        Actions actions = new Actions(getAppiumDriver());
+
+
+         adressAddİlkSatır.click();
+                actions.sendKeys("Harun").perform();
+                ReusableMethods.wait(1);
+                actions.sendKeys(Keys.TAB)
+                .sendKeys("mewaf25847@mposhop.com").perform();
+                ReusableMethods.wait(1);
+                actions.sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .sendKeys("6504441010").perform();
+                ReusableMethods.wait(1);
+                adressCountry.click();
+                ReusableMethods.wait(1);
+                adressCountryAlbania.click();
+                ReusableMethods.wait(1);
+                adressState.click();
+                ReusableMethods.wait(1);
+                adressStateDiber.click();
+                ReusableMethods.wait(1);
+                adressCity.click();
+                ReusableMethods.wait(1);
+                adressCityKlos.click();
+                ReusableMethods.wait(1);
+                actions.sendKeys(Keys.TAB)
+                .sendKeys("1").perform();
+                ReusableMethods.wait(1);
+                actions.sendKeys(Keys.TAB)
+                .sendKeys("11").perform();
+                ReusableMethods.wait(1);
+                actions.sendKeys(Keys.TAB)
+                        .sendKeys(Keys.ENTER)
+                .perform();
+        ReusableMethods.wait(4);
+    }
+
+
+    public void verifyLoginPageisdisplayed() {
+        assertTrue(signInDisplayed.isDisplayed());
+ReusableMethods.wait(2);
+    }
+    public void verifyingProductDetailsAndContents(String section, String content){
+        OptionsMet.VerifyElementText(section);
+        ReusableMethods.wait(2);
+        OptionsMet.clickButtonByDescription(section);
+        ReusableMethods.wait(1);
+        OptionsMet.VerifyElementText(content);
+        ReusableMethods.wait(1);
+        getAppiumDriver().navigate().back();
+        ReusableMethods.wait(2);
+    }
+
 }
+
 
 
 
