@@ -1,10 +1,10 @@
-@ahme
+@smoke2
 Feature:US_020 Verifying Change Password process
 
   Background: User opens the app and Logging to mobile application
     * User makes driver adjustments
 
-    Scenario :
+    Scenario:
       * The user logs in using the name "ahmetgulmek" and "ahmetPassword"
       * User clicks the button with description "Profile"
       * Verifies the visibility of the "Change Password" button on the home page and the visibility of the text "Change Password" on the page by clicking it

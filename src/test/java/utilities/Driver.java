@@ -4,7 +4,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.Socket;
 import java.net.URL;
 import java.time.Duration;
 
@@ -28,7 +30,7 @@ public class Driver {
                 case "Android":
                     options = new UiAutomator2Options();
                     options.setPlatformName("Android").setAutomationName("UiAutomator2");
-                    options.setApp("C:\\Users\\ahmet\\Downloads\\querycart2006.apk");
+                    options.setApp("C:\\Users\\Gamzenur\\Downloads\\querycart2006.apk");
                     options.setAppPackage("com.wise.querycart");
                     options.setAppActivity("com.wise.querycart.MainActivity");
                     options.setUdid("emulator-5554");
@@ -57,6 +59,14 @@ public class Driver {
          */
 
         return driver;
+    }
+
+    public static boolean isAppiumServerRunning(String host, int port) {
+        try (Socket socket = new Socket(host, port)) {
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     public static void quitAppiumDriver() {
