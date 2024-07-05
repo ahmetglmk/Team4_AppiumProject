@@ -10,7 +10,7 @@ Feature: As a registered user, I would like to be able to see the categories and
     #* Verify that the  are displayed.
 
 
-  @15
+  @smoke1
   Scenario: The products on the Women category page should be able to perform actions (add to cart, add to favorites list and view).
     * User clicks the button with description "Profile"
     * User clicks the button with description "Sign In"
@@ -20,5 +20,5 @@ Feature: As a registered user, I would like to be able to see the categories and
     * Click on the desired product and view it.
     * User clicks the button with description Add To Cart
     * User clicks the button with description "Favorite"
-    * Driver turns off
+
     
