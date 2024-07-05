@@ -362,4 +362,16 @@ public class Stepdefinition extends OptionsMet {
     public void verify_that_you_have_gone_to_the_login_page() {
         card.verifyLoginPageisdisplayed();
     }
+
+    @Given("Click first product from home page")
+    public void click_first_product_from_home_page() {
+        ReusableMethods.wait(1);
+        card.firstProduct.click();
+    }
+    @Given("Verifies the visibility of first product {string} button on the home page and the visibility of the text {string} on the page by clicking it")
+    public void verifies_the_visibility_of_first_product_button_on_the_home_page_and_the_visibility_of_the_text_on_the_page_by_clicking_it(String section, String content) throws InvalidMidiDataException {
+        ReusableMethods.wait(3);
+        OptionsMet.swipe(499, 1986, 530, 841);
+        card.verifyingProductDetailsAndContents(section,content);
+    }
 }
