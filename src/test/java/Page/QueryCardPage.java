@@ -193,6 +193,8 @@ public class QueryCardPage {
     private WebElement verifyProfil;
     @AndroidFindBy(xpath = "(//android.view.View[@content-desc=\"Sign Up\"])[1]")
     private WebElement signUpPageText;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Flower Print Foil T-shirt\n" + "0 (0  Reviews)\n" + "$65.00\")")
+    public WebElement firstProduct;
 
     // Ahmet
     @AndroidFindBy(xpath = "(//*[@class='android.view.View'])[10]")
@@ -790,6 +792,17 @@ public class QueryCardPage {
         assertTrue(signInDisplayed.isDisplayed());
 ReusableMethods.wait(2);
     }
+    public void verifyingProductDetailsAndContents(String section, String content){
+        OptionsMet.VerifyElementText(section);
+        ReusableMethods.wait(2);
+        OptionsMet.clickButtonByDescription(section);
+        ReusableMethods.wait(1);
+        OptionsMet.VerifyElementText(content);
+        ReusableMethods.wait(1);
+        getAppiumDriver().navigate().back();
+        ReusableMethods.wait(2);
+    }
+
 }
 
 
